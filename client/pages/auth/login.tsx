@@ -11,6 +11,7 @@ import {
   TextInput,
   Title
 } from "@mantine/core";
+import { showNotification, updateNotification } from "@mantine/notifications";
 import { useRouter } from "next/router";
 
 export default function LoginPage() {
@@ -29,8 +30,30 @@ export default function LoginPage() {
     AxiosError,
     Parameters<typeof login>["0"]
   >(login, {
+    onMutate: () => {
+      showNotification({
+        id: "login",
+        title: "login in",
+        message: "wait",
+        loading: true
+      });
+    },
     onSuccess: () => {
+      updateNotification({
+        id: "login",
+        title: "success",
+        message: "logged in successfully",
+        loading: false
+      });
       router.push("/");
+    },
+    onError: (response) => {
+      updateNotification({
+        id: "login",
+        title: "Error",
+        message: response.message,
+        loading: false
+      });
     }
   });
 

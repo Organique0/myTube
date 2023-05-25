@@ -2,11 +2,13 @@ import { Request, Response } from "express";
 import { findUserByEmail } from "../user/user.service";
 import { StatusCodes } from "http-status-codes";
 import { signJwt } from "./auth.utils";
-import { strict } from "assert";
 import omit from "../../helpers/omit";
 import { LoginBody } from "./auth.schema";
 
-export async function loginHandler(req: Request<{},{},LoginBody>, res: Response) {
+export async function loginHandler(
+  req: Request<{}, {}, LoginBody>,
+  res: Response
+) {
   const { email, password } = req.body;
   const user = await findUserByEmail(email);
 
@@ -16,7 +18,7 @@ export async function loginHandler(req: Request<{},{},LoginBody>, res: Response)
       .send("invalid email or password");
   }
 
-  const payload = omit(user.toJSON(),['password']);
+  const payload = omit(user.toJSON(), ["password"]);
 
   const jwt = signJwt(payload);
 
