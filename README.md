@@ -14,3 +14,5 @@ And on the topic of React.js. I think that it is pretty cool and not even that h
 But as I have said, vanilla Javascript is lame AF. 
 Who even uses that boring barbage nowadays what there are so many cooler frontend frameworks that allow you to make amazing applications with very little code.
 And yes, there is Vue.js that exists too, but React is the most popular and since I do what everyone else does I want to learn React.js
+
+I will not even list the url to the tutorial because I think that it is very bad and even after I have tried to just copy-paste his code from his github, the project still did not work. I think that the problem is that it is an old tutorial and tehnology is developing really fast nowadays. (web tehnology)
